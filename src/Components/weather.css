@@ -5,12 +5,39 @@ body {
     background-size: cover;
     width: 100%;
     color: #fff;
+    height: 100vh;
 }
 
 .weather-app {
-    margin-top: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-direction: column;
 }
 
 .icon {
     color: #FFD557;
 }
+
+h1 {
+    font-size: 3rem;
+}
+
+
+
+@media(max-width: 760px) {
+    /* .weather-app {
+        padding: 0 20px;
+    } */
+
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    /* form {
+        display: flex;
+        flex-direction: column;
+    } */
+} 

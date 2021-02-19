@@ -49,19 +49,23 @@ const Weather = () => {
     return (
         <div className="weather-app">
             <Container>
+            <div className="flex">
             <h1>Weather app <WbSunnyIcon className="icon" /></h1>
             <Form>
-            <Row>
-                <Col>
-                    <Form.Control placeholder="First name" type="text" name="city" placeholder="city" onChange={handleChange} value={weather.city} />
-                </Col>
-                <Col>
-                    <Form.Control placeholder="Last name" type="text" name="country" placeholder="country"  onChange={handleChange} value={weather.country}/>
-                </Col>
+                <Form.Row>
+                    <Col>
+                        <Form.Control placeholder="First name" type="text" name="city" placeholder="city" onChange={handleChange} value={weather.city} />
+                    </Col>
+                    <Col>
+                        <Form.Control placeholder="Last name" type="text" name="country" placeholder="country"  onChange={handleChange} value={weather.country}/>
+                    </Col>
                 <Button variant="primary" onClick={handleClick} aria-controls="example-fade-text" aria-expanded={open}>Submit</Button> 
-            </Row>
+                </Form.Row>
             </Form>
+            </div>
+            
             </Container>
+            
 
              <div>
             {
@@ -71,7 +75,7 @@ const Weather = () => {
                     </Container>
                 ) : null
             }
-        </div>
+            </div>
         </div>
         
     )
