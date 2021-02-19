@@ -1,0 +1,16 @@
+body {
+    background: url(../Components/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    color: #fff;
+}
+
+.weather-app {
+    margin-top: 15vh;
+}
+
+.icon {
+    color: #FFD557;
+}
