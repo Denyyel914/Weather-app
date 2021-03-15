@@ -1,4 +1,5 @@
 import React from 'react';
+import RoomIcon from '@material-ui/icons/Room';
 import './displayWeather.css';
 const DisplayWeather = (props) => {
 //    const {data} = props;
@@ -6,7 +7,7 @@ const DisplayWeather = (props) => {
    const date = new Date().toLocaleTimeString()
    const day = new Date().toDateString()
     return <div className="flex">
-        <h1>{props.cityName},{props.country}</h1>
+        <h1><RoomIcon />{props.cityName},{props.country}</h1>
         <img src={src} />
         <h3>°{props.temp}</h3>
         <h3>{props.data}</h3>

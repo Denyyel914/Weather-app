@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useState, useEffect } from 'react';
 import DisplayWeather from './displayWeather';
 import WbSunnyIcon from '@material-ui/icons/WbSunny';
-import { Button,Form,Row,Col,Container } from 'react-bootstrap';
+import { Button,Form,Row,Col,Container, Collapse } from 'react-bootstrap';
 import './weather.css';
 
 const Weather = () => {
@@ -16,23 +16,28 @@ const Weather = () => {
 
     const [store,setStore] = useState(null);
 
-    const [open,setOpen] = useState(false);
+    // const [open,setOpen] = useState(true);
 
         
     const dataWeather = async () => {
-        await axios
-        .get(`https://api.openweathermap.org/data/2.5/weather?q=${weather.city},${weather.country}&appid=${API}`)
-        .then(res => {
-            console.log(res);
-        const {data} = res;
-        setStore(data);
-        })
+        if(weather.city === "") {
+            alert('hehehe');
+        } else {
+            await axios
+            .get(`https://api.openweathermap.org/data/2.5/weather?q=${weather.city},${weather.country}&appid=${API}`)
+            .then(res => {
+                console.log(res);
+            const {data} = res;
+            setStore(data);
+            })
+        }
     }
 
     // const handleClick = (e) => {e.preventDefault(), dataWeather() }
     const handleClick = (e) => {
         e.preventDefault();
-        dataWeather()
+        dataWeather() 
+        // setOpen(!open)
     }
 
     const handleChange = (e) => {
@@ -50,7 +55,7 @@ const Weather = () => {
         <div className="weather-app">
             <Container>
             <div className="flex">
-            <h1>Weather app <WbSunnyIcon className="icon" /></h1>
+            <h1>Weather App <WbSunnyIcon className="icon" /></h1>
             <Form>
                 <Form.Row>
                     <Col>
@@ -59,7 +64,8 @@ const Weather = () => {
                     <Col>
                         <Form.Control placeholder="Last name" type="text" name="country" placeholder="country"  onChange={handleChange} value={weather.country}/>
                     </Col>
-                <Button variant="primary" onClick={handleClick} aria-controls="example-fade-text" aria-expanded={open}>Submit</Button> 
+                <Button variant="primary" onClick={handleClick} aria-controls="example-collapse-text"
+>Submit</Button> 
                 </Form.Row>
             </Form>
             </div>
@@ -71,7 +77,7 @@ const Weather = () => {
             {
                 store != undefined ? (
                     <Container>
-                    <DisplayWeather cityName={store.name} sunrise={new Date(store.sys.sunrise * 1000).toLocaleTimeString()} sunset={new Date(store.sys.sunset * 1000).toLocaleTimeString()} main={store.weather[0].main} country={store.sys.country} imgSrc={store.weather[0].icon} data={store.weather[0].description} temp={Math.floor(store.main.temp - 273.15)} humidity={store.main.humidity} pressure={store.main.pressure} visibility={store.visibility / 1000} win={Math.floor(store.wind.speed * 18) / 5 } direction={store.wind.deg}/>
+                    <DisplayWeather id="example-collapse-text" cityName={store.name} sunrise={new Date(store.sys.sunrise * 1000).toLocaleTimeString()} sunset={new Date(store.sys.sunset * 1000).toLocaleTimeString()} main={store.weather[0].main} country={store.sys.country} imgSrc={store.weather[0].icon} data={store.weather[0].description} temp={Math.floor(store.main.temp - 273.15)} humidity={store.main.humidity} pressure={store.main.pressure} visibility={store.visibility / 1000} win={Math.floor(store.wind.speed * 18) / 5 } direction={store.wind.deg}/>
                     </Container>
                 ) : null
             }
