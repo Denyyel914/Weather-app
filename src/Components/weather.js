@@ -55,7 +55,7 @@ const Weather = () => {
         <div className="weather-app">
             <Container>
             <div className="flex">
-            <h1>Weather App <WbSunnyIcon className="icon" /></h1>
+            <h1>Weather A <WbSunnyIcon className="icon" /></h1>
             <Form>
                 <Form.Row>
                     <Col>
